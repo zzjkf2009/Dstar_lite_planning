@@ -1,0 +1,7 @@
+<launch>
+<include file = "$(find Dstar_lite_planning)/launch/turtlebot_garage.launch"></include>
+<include file = "$(find Dstar_lite_planning)/launch/TurtlebotEKF.launch"></include>
+<include file = "$(find turtlebot_navigation)/launch/gmapping_demo.launch"></include>
+<include file = "$(find turtlebot_rviz_launchers view)/launch/view_navigation.launch"></include>
+<include file = "$(find Dstar_lite_planning)/launch/teleop_keyboard.launch"></include>
+</launch>

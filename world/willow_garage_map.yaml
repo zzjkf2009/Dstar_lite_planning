@@ -1,0 +1,7 @@
+image: willow_garage_map.pgm
+# a 584 X 526 map @ 0.100 m/cell
+resolution: 0.1
+origin: [-18, -15, 0.0]
+occupied_thresh: 0.65
+free_thresh: 0.196
+negate: 0
