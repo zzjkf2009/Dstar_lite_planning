@@ -4,7 +4,7 @@
 
     <node name="spawn_minibot_model" pkg="gazebo_ros" type="spawn_model"
      args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)"
-     respawn="false" output="screen" />
+     respawn="true" output="screen" />
 
     <!-- Velocity muxer -->
   <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>

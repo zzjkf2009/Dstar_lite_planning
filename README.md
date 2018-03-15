@@ -19,10 +19,14 @@ Also, this could be challenge to apply it on a drone. There is a package *hector
 *robot_pose_ekf*.
 - D* lite is a dynamic re-planning algorithm based on LPA* (lifelong planning A*), which can do the re-planning based on the updated map.
 
-
+## Update:
+- Due to the drift of the Odometry, the mapping info was not accurate if the robot is operating for a long time mapping. This cause problem since the localization is depend on the map and if the localization is massed up, the observation will have a hard time to match the map, which in turn will cause the robot spend most of its time on planning (see (how D*lite works)[http://idm-lab.org/bib/abstracts/papers/aaai02b.pdf]). so *slam_gmapping* will become a secondary choice, I decide to use LIDAR (*hector_mapping*) instead, which may give a much better (accurate and precise) map.
+- I decide to create the implement the algorithm on the hard code grid map first, since the accuracy of the map will influence the overall performance, to focus more on the planning algorithm itself on this stage, I will use a simple hard coded map first, and then move onto scanned map for nest stage.
 ## Resources
 SLAM package:
 - For kinect: *RGBD-6D-SLAM*. After convert it to laser data using face laser scanner, *slam_gmapping* can be used
 - For LIDAR: *hector_mapping*
 - Mapping and localization: [Upenn lecture](https://www.youtube.com/watch?v=Q4qM-Uzj1SI)
 - [Writing A Global Path Planner As Plugin in ROS](http://wiki.ros.org/navigation/Tutorials/Writing%20A%20Global%20Path%20Planner%20As%20Plugin%20in%20ROS)
+## Planning algorithms
+- LPA* (lifelong planning A*)
