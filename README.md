@@ -10,8 +10,20 @@ introduced later. After we got the occupancy map, D* lite algorithm (as a plugin
 
 ## Todo
 One of the drawback for D*lite is that, when the robot observe a change of the environment, it will regenerate a new path, this process takes time (depends on the environment, maybe a few milliseconds up to few seconds). And the question is that, what does the robot do during this time. Maybe you want the robot stops at there until it finds the new path or slow down. But what if the robot has high momenta or speed or it can't maintain a stop state (like airplane). So anytime algorithm need to be applied in future work.
-Also, this could be challenge to apply it on a drone. There is a package *hector_quadrotor* which provide a platform to simulate the behavior of the drone. We will try it (maybe Anytime dynamic A*) on it. The quad are equipped with a modern LIDAR systems like the Hokuyo UTM-30LX. Package *hector_mapping* will in turn generate the occupancy map just like *slam_gmapping*. But instead of using Odometry, it uses data from LIDAR.   
+Also, this could be challenge to apply it on a drone. There is a package *hector_quadrotor* which provide a platform to simulate the behavior of the drone. We will try it (maybe Anytime dynamic A*) on it. The quad are equipped with a modern LIDAR systems like the Hokuyo UTM-30LX. Package *hector_mapping* will in turn generate the occupancy map just like *slam_gmapping*. But instead of using Odometry, it uses data from LIDAR.
 
+## Run
+```
+roslaunch Dstar_lite_planning turtlebot_garage.launch
+roslaunch Dstar_lite_planning turtlebot_dstar_navigation.launch
+```
+1. Change global planner to our own global planner
+
+2. To send a goal:
+
+    - Click the "2D Nav Goal" button
+
+    - Click on the map where you want the TurtleBot to drive and drag in the direction the TurtleBot should be pointing at the end. 
 
 ## Pipeline
 - Map_building: As said in the overview, the package *slam_gmapping* is used to generate the 2D occupancy map. Originally, it uses the tf from /Odometry as pose of the robot. This /tf can be inaccurate and need to be optimized with other data, such as gyro (IMU). So an sensor fusion package *robot_pose_ekf* is used to estimate a optimal pose by combining the odometer and gyro using extended kalman filter. Thus, the /tf from robot_pose_ekf/odom_combined (topic) will be used instead to feed into the *slam_gmapping*, which will gives us a occupancy map.
