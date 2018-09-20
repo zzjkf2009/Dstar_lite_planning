@@ -30,7 +30,8 @@ roslaunch Dstar_lite_planning turtlebot_dstar_navigation.launch
 
 ## Result
 The video shows how the Turtlebot navigate through the changed (comparing to the mapped environment) terrain, and update (re-plan) its global path according to the change.
-[![Refer video](https://img.youtube.com/vi/xUx7TYDRqXA/0.jpg)](https://youtu.be/xUx7TYDRqXA)
+
+- [![Refer video](https://img.youtube.com/vi/xUx7TYDRqXA/0.jpg)](https://youtu.be/xUx7TYDRqXA)
 ## Update:
 - Due to the drift of the Odometry, the mapping info was not accurate if the robot is operating for a long time mapping. This cause problem since the localization is depend on the map and if the localization is massed up, the observation will have a hard time to match the map, which in turn will cause the robot spend most of its time on planning (see (how D*lite works)[http://idm-lab.org/bib/abstracts/papers/aaai02b.pdf]). so *slam_gmapping* will become a secondary choice, I decide to use LIDAR (*hector_mapping*) instead, which may give a much better (accurate and precise) map.
 - I decide to create the implement the algorithm on the hard code grid map first, since the accuracy of the map will influence the overall performance, to focus more on the planning algorithm itself on this stage, I will use a simple hard coded map first, and then move onto scanned map for nest stage.
