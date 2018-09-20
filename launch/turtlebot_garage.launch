@@ -1,8 +1,9 @@
 <launch>
   <param name="/use_sim_time" value="true" />
   <!--arg name="world_file"  default="$(find Dstar_lite_planning)/world/willow_garage.world"/-->
-  <arg name="world_file"  default="$(find Dstar_lite_planning)/world/playground.world"/>
-  <arg name="robot_init_pose" default="-x -0 -y -0 -z 0" />
+  <arg name="world_file"  default="$(find Dstar_lite_planning)/world/Testmapping.world"/>
+  <!--arg name="world_file"  default="$(find turtlebot_gazebo)/worlds/playground.world"/-->
+  <arg name="robot_init_pose" default="-x -6.0 -y -1.5 -z 0" />
   <arg name="base"      value="$(optenv TURTLEBOT_BASE kobuki)"/> <!-- create, roomba -->
   <arg name="battery"   value="$(optenv TURTLEBOT_BATTERY /proc/acpi/battery/BAT0)"/>  <!-- /proc/acpi/battery/BAT0 --> 
   <arg name="gui" default="true"/>

@@ -2,13 +2,22 @@ cmake_minimum_required(VERSION 2.8.3)
 project(Dstar_lite_planning)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp rospy
+  costmap_2d
+  geometry_msgs
+  nav_core
+  nav_msgs
+  pluginlib
+  roscpp
+  rospy
+  std_msgs
+  tf
+  visualization_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -68,7 +77,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+#   geometry_msgs#   nav_msgs#   std_msgs#   visualization_msgs
 # )
 
 ################################################
@@ -101,10 +110,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES Dstar_lite_planning
-#  CATKIN_DEPENDS roscpp rospy
-#  DEPENDS system_lib
+  INCLUDE_DIRS include
+  LIBRARIES Dstar_lite_planning
+  CATKIN_DEPENDS costmap_2d geometry_msgs nav_core nav_msgs pluginlib roscpp rospy std_msgs tf visualization_msgs
+  DEPENDS system_lib
 )
 
 ###########
@@ -114,8 +123,9 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
+  ${Eigen_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -131,7 +141,14 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/Dstar_lite_planning_node.cpp)
+
+
+
+set(SOURCES
+    src/srl_dstar_lite.cpp include/Dstar_lite_planning/costmap_model.cpp src/Dstarlite.cpp include/Dstar_lite_planning/pathSplineSmoother/pathSplineSmoother.cpp
+)
+
+add_library(${PROJECT_NAME} ${SOURCES_RRT} ${SOURCES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

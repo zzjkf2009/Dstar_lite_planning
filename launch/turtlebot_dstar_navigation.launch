@@ -11,14 +11,14 @@
   </include-->
 
   <!-- Map server -->
-  <!--arg name="map_file" default="$(find Dstar_lite_planning)/world/willow_garage_map.yaml"/-->
-  <arg name="map_file" default="$(find turtlebot_gazebo)/maps/playground.yaml"/>
+  <arg name="map_file" default="$(find Dstar_lite_planning)/world/final_map.yaml"/>
+  <!--arg name="map_file" default="$(find turtlebot_gazebo)/maps/playground.yaml"/-->
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!-- AMCL -->
   <!--arg name="custom_amcl_launch_file" default="$(find turtlebot_navigation)/launch/includes/amcl/$(arg 3d_sensor)_amcl.launch.xml"/-->
-  <arg name="initial_pose_x" default="0.0"/> <!-- Use 17.0 for willow's map in simulation -->
-  <arg name="initial_pose_y" default="0.0"/> <!-- Use 17.0 for willow's map in simulation -->
+  <arg name="initial_pose_x" default="-6.0"/> <!-- Use 17.0 for willow's map in simulation -->
+  <arg name="initial_pose_y" default="-1.5"/> <!-- Use 17.0 for willow's map in simulation -->
   <arg name="initial_pose_a" default="0.0"/>
   <!--include file="$(arg custom_amcl_launch_file)"-->
   <include file="$(find turtlebot_navigation)/launch/includes/amcl/amcl.launch.xml">
