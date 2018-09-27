@@ -37,7 +37,7 @@ The video shows how the Turtlebot navigate through the changed (comparing to the
 - I decide to create the implement the algorithm on the hard code grid map first, since the accuracy of the map will influence the overall performance, to focus more on the planning algorithm itself on this stage, I will use a simple hard coded map first, and then move onto scanned map for nest stage.
 ## Resources
 SLAM package:
-- For kinect: *RGBD-6D-SLAM*. After convert it to laser data using face laser scanner, *slam_gmapping* can be used
+- For kinect: *RGBD-6D-SLAM*.  After convert it to laser data using face laser scanner, *slam_gmapping* can be used
 - For LIDAR: *hector_mapping*
 - Mapping and localization: [Upenn lecture](https://www.youtube.com/watch?v=Q4qM-Uzj1SI)
 - [Writing A Global Path Planner As Plugin in ROS](http://wiki.ros.org/navigation/Tutorials/Writing%20A%20Global%20Path%20Planner%20As%20Plugin%20in%20ROS)
